@@ -13,9 +13,20 @@
         <h2>Weather Dashboard Title</h2>
         <p>Weather Dashboard body</p>
 
+        <main>
+            <form id="cityForm">
+                <label for="cityname">What City would you like to see:</label>
+                <input name="cityname" id="cityname"  type="text">
 
+                <button type="submit" class="citySearch">Search Weather</button>
+            </form>
+        </main>
 
-
+        <section class="weatherBox">
+            <p>Weather Information</p>
+            <li>WEATHER INFO</li>
+            <div class="cityWeather"></div>
+        </section>
 
         <script src="./assets/js/api.js"></script>
     </body>
