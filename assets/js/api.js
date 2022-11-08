@@ -1,6 +1,6 @@
 // API URL
 
-// https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+// INSERT API URL AND CODE HERE
 
 // Form Box Variables
 var cityForm = document.querySelector("#cityForm");
@@ -16,7 +16,7 @@ var getCity = function(event) {
     var cityName = cityEl.value.trim();
     console.log(cityName);
 
-    cityWeather(cityName);
+    cityWeather(cityName);     
 
     cityEl.value = "";
 };
@@ -24,10 +24,16 @@ var getCity = function(event) {
 // Display City Results
 var cityWeather = function(city) {
     
-    var liEl = document.createAttribute('li');
-    liEl.textContent = city;
+    console.log(city);
+
+    // ABOVE ALL WORKS, below does not work
+    
+    /*
+    var liEl = document.createAttribute('div');
+    liEl.textContent = cityEl;
     
     cityWeatherEl.appendChild(liEl);
+    */
 }
 
 cityForm.addEventListener('submit', getCity);
