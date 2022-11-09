@@ -2,11 +2,13 @@
 
 // INSERT API URL AND CODE HERE
 
-// Form Box Variables
+// Search Form Variables
 var cityForm = document.querySelector("#cityForm");
 var cityEl = document.querySelector("#cityname");
 
-// Results Box Variables
+var searchList = document.querySelector("#search-history-list");
+
+// Weather Box Variables
 var cityWeatherEl = document.querySelector("#cityWeather");
 
 // City Search History
@@ -23,21 +25,25 @@ var getCity = function(event) {
     cityEl.value = "";
 };
 
-// Display City Results
+// Display Search History - Cities
 var cityWeather = function(city) {
 
     if (!citySearchHistory.length === 0) {
         citySearchHistory.push(city);
     } else {
         citySearchHistory.push(city);
-    }
+    };
 
     console.log(citySearchHistory);
-    /*
-    for (i=0; i < citySearchHistory.length; i++) {
-        // insert appending to the list below search history here
-    }
-    */
+
+    divEl = document.createElement('div');
+    pEl = document.createElement('p');
+    pEl.textContent = city;
+    pEl.setAttribute("style", "background-color: grey; color: pink; padding: 10px; text-align: center;");
+    divEl.appendChild(pEl);
+    searchList.appendChild(divEl);
 }
 
 cityForm.addEventListener('submit', getCity);
+
+// Display the Search Term Weather
