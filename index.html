@@ -5,26 +5,36 @@
         <link rel="stylesheet" href="./assets/css/style.css" />
     </head>
 
-    <header>
-        <h1>Weather Dashboard</h1>
-    </header>
-
     <body>
-        <h2>Weather Dashboard</h2>
 
-        <main>
-            <form id="cityForm">
-                <label for="cityname">What City would you like to see:</label>
-                <input name="cityname" id="cityname"  type="text">
+        <header><h1>Weather Dashboard</h1></header>
 
-                <button type="submit" class="citySearch">Search Weather</button>
-            </form>
+        <main class="content-box">
+            <section id="search-form">
+                <form id="cityForm">
+                    <label for="cityname">Search for a City:</label>
+                    <input name="cityname" id="cityname"  type="text">
+    
+                    <button type="submit" class="citySearch">Search</button>
+                </form>
+    
+                <div id="search-history">
+                    <h2>Previous Searches:</h2>
+                    <p></p>
+                </div>
+            </section>
+    
+            <section class="weather-box">
+                <section class="weather-today">
+                    <h2>Todays weather:</h2>
+                </section>
+        
+                <section class="weather-forecast">
+                    <h2>5-Day Forecast:</h2>
+                </section>
+            </section>
         </main>
-
-        <section class="weatherBox">
-            
-        </section>
-
+        
         <script src="./assets/js/api.js"></script>
     </body>
 </html>
