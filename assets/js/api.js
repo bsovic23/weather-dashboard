@@ -1,8 +1,6 @@
 // API URL
 var APIKey = "46be7341d47ff94911e8303130d2f7c0";
 
-//var queryUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat +"&lon=" + lon + "&appid=" + APIKey;
-
 // Search Form Variables
 var cityForm = document.querySelector("#cityForm");
 var cityEl = document.querySelector("#cityname");
@@ -92,12 +90,34 @@ var todayWeather = function(city, longitude, latitude) {
     // OR if already blank and first search then it creates the boxes
     console.log(city, longitude, latitude);
     console.log("today function works properly!");
+
+    var todayCityContainer = document.querySelector("#today-container");
+
+    // Creating the display for todays weather
+
+    todayUrl = "https://api.openweathermap.org/data/2.5/forecast?lat="+latitude+"&lon="+longitude+"&appid="+APIKey
+
+    fetch(todayUrl).then(function(response) {
+        response.json().then(function(data) {
+          console.log({
+            data
+            /*
+            "city": city,
+            "todayweather": data.list[5].weather,
+            "day1weather": data.list[6].weather,
+            "day2weather": data.list[7].weather,
+            "day3weather": data.list[8].weather,
+            "day4weather": data.list[9].weather,
+            "day5weather": data.list[10].weather
+            */
+          });
+        });
+      });  
 };
 
 // Display the Forecast Weather for 5 days
 var forecastWeather = function(city, longitude, latitude) {
-    console.log(city, longitude, latitude);
-    console.log("forecast function works properly!");
+    // Creating the display for todays weather
 };
 
 
