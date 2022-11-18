@@ -13,6 +13,8 @@ var cityWeatherEl = document.querySelector("#cityWeather");
 // City Search History
 citySearchHistory = [];
 
+
+// ===================================================================//
 // Search City Function
 var getCity = function(event) {
     event.preventDefault();
@@ -24,6 +26,7 @@ var getCity = function(event) {
     cityEl.value = "";
 };
 
+// ===================================================================//
 // Function for finding city in API
 var cityForecast = function(city) {
     var searchCity = city;
@@ -32,19 +35,17 @@ var cityForecast = function(city) {
 
     fetch(cityWeatherUrl).then(function(response) {
         response.json().then(function(data) {
-          console.log(data);
 
           dataCity = data.name;
           dataLon = data.coord.lon;
           dataLat = data.coord.lat;
-
-          console.log(dataCity, dataLon, dataLat);
 
           cityWeather(dataCity, dataLon, dataLat)
         });
       });
 };
 
+// ===================================================================//
 // Display Search History - Cities
 var cityWeather = function(city, longitude, latitude) {
 
@@ -77,56 +78,83 @@ var cityWeather = function(city, longitude, latitude) {
     searchList.appendChild(divEl);
 
     // Today weather history
-    todayWeather(city, longitude, latitude);
-
-    // Forecast weather history
-    forecastWeather(city, longitude, latitude);
+    weather(city, longitude, latitude);
 };
 
+
+// ===================================================================//
 // Display the Search Term Weather
 
-var todayWeather = function(city, longitude, latitude) {
-    // First step of this function is clearing the previous boxes
-    // OR if already blank and first search then it creates the boxes
-    console.log(city, longitude, latitude);
-    console.log("today function works properly!");
-
-    var todayCityContainer = document.querySelector("#today-container");
-
+var weather = function(city, longitude, latitude) {
     // Creating the display for todays weather
 
     todayUrl = "https://api.openweathermap.org/data/2.5/forecast?lat="+latitude+"&lon="+longitude+"&appid="+APIKey
 
     fetch(todayUrl).then(function(response) {
         response.json().then(function(data) {
-          console.log({
-            data
-            /*
-            "city": city,
-            "todayweather": data.list[5].weather,
-            "day1weather": data.list[6].weather,
-            "day2weather": data.list[7].weather,
-            "day3weather": data.list[8].weather,
-            "day4weather": data.list[9].weather,
-            "day5weather": data.list[10].weather
-            */
-          });
+          var cityWeatherObject = {
+            "city": data.city.name,
+            "todayweather": data.list[0],
+            "day1weather": data.list[8],
+            "day2weather": data.list[7],
+            "day3weather": data.list[16],
+            "day4weather": data.list[24],
+            "day5weather": data.list[32]
+          };
+          console.log(cityWeatherObject)
+
+          todayWeatherBox(cityWeatherObject);
+          forecastWeatherBox(cityWeatherObject);
         });
-      });  
+      }); 
 };
 
+// ===================================================================//
+// Display the Weather for today
+
+var todayWeatherBox = function(cityWeatherObject) {
+
+  console.log(cityWeatherObject);
+
+  // Creating the DOM elements for today weather using the data
+  var todayCityContainer = document.querySelector("#today-container");
+ 
+  var todayDiv = document.createElement('div');
+
+  var todayCityEl = document.createElement('h2');
+  var todayDateEl = document.createElement('h3');
+  var todayTempEl = document.createElement('h3');
+  var todayWindEl = document.createElement('h3');
+  var todayHumidityEl = document.createElement('h3');
+
+  todayCityEl.textContent = "City: " + cityWeatherObject.city;
+  todayDateEl.textContent = "Date: " + cityWeatherObject.day1weather.dt_txt;
+  todayTempEl.textContent = "Temperature: " + cityWeatherObject.day1weather.main.temp;
+  todayWindEl.textContent = "Wind Speed: " + cityWeatherObject.day1weather.wind.speed;
+  todayHumidityEl.textContent = "Humidity: " + cityWeatherObject.day1weather.main.humidity;
+
+  // Add to box
+  todayDiv.appendChild(todayCityEl);
+  todayDiv.appendChild(todayDateEl);
+  todayDiv.appendChild(todayTempEl);
+  todayDiv.appendChild(todayWindEl);
+  todayDiv.appendChild(todayHumidityEl);
+
+  todayCityContainer.appendChild(todayDiv);
+};
+
+// ===================================================================//
 // Display the Forecast Weather for 5 days
-var forecastWeather = function(city, longitude, latitude) {
-    // Creating the display for todays weather
+
+var forecastWeatherBox = function(cityWeatherObject) {
+    
+  console.log(cityWeatherObject);
 };
 
 
 
-// Button that starts the entire search process
-cityForm.addEventListener('submit', getCity);
 
-
-
+// ===================================================================//
 // Function for clicking the previous history city and displaying that data
 // rather than a search term city
 
@@ -137,8 +165,6 @@ cityForm.addEventListener('submit', getCity);
 
 
 
-
-// Local Storage
-
-
-
+// ===================================================================//
+// Button that starts the entire search process
+cityForm.addEventListener('submit', getCity);
