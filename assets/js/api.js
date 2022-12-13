@@ -41,6 +41,10 @@ var cityForecast = function(city) {
           dataLat = data.coord.lat;
 
           cityWeather(dataCity, dataLon, dataLat)
+        })
+        .catch(err => {
+          console.log(err);
+          window.alert("This city could not be found!");
         });
       });
 };
@@ -73,12 +77,12 @@ var cityWeather = function(city, longitude, latitude) {
 
     const searchItem = 
     `
-    <button id="history-btn" value="${city}">
+    <button value="${city}" id="history-btn" onclick="searchHistoryBtn()">
       <h2>${city}</h2>
     </button>
     `
 
-    $searchList.innerHTML +=searchItem;
+    $searchList.innerHTML += searchItem;
 
     // Today weather history
     weather(city, longitude, latitude);
@@ -151,19 +155,10 @@ var forecastWeatherBox = function(cityWeatherObject) {
 // rather than a search term city
 
 // Brit: Need to make the search history buttons with id, and when click, the button re runs the 'today weather' function
-/*
+
 var searchHistoryBtn = function() {
-  console.log(`${value}`);
+  console.log("this worked");
 };
-
-const historyBtn = document.querySelector("#history-btn");
-historyBtn.addEventListener('click', searchHistoryBtn);
-
-*/
-
-
-
-
 
 // ===================================================================//
 // Button that starts the entire search process
