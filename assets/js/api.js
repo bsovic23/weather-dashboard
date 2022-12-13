@@ -12,6 +12,7 @@ var cityWeatherEl = document.querySelector("#cityWeather");
 
 // City Search History
 citySearchHistory = [];
+cityNumber = 0;
 
 
 // ===================================================================//
@@ -56,6 +57,7 @@ var cityWeather = function(city, longitude, latitude) {
   if (!citySearchHistory.length === 0) {
         citySearchHistory.push(
             {
+                "cityIdValue": cityNumber,
                 "city": city,
                 "longitude": longitude,
                 "latitdue": latitude
@@ -64,6 +66,7 @@ var cityWeather = function(city, longitude, latitude) {
     } else {
         citySearchHistory.push(
             {
+                "cityIdValue": cityNumber,
                 "city": city,
                 "longitude": longitude,
                 "latitdue": latitude
@@ -71,16 +74,14 @@ var cityWeather = function(city, longitude, latitude) {
             );
     };
 
-    console.log(citySearchHistory);
-
     const $searchList = document.querySelector("#search-history-list");
 
     const searchItem = 
     `
-    <button value="${city}" id="history-btn" onclick="searchHistoryBtn()">
-      <h2>${city}</h2>
-    </button>
+    <input type="button" value="${city}" id="${cityNumber}" onclick="searchHistoryFunction(this.value)" />
     `
+
+    cityNumber = cityNumber + 1;
 
     $searchList.innerHTML += searchItem;
 
@@ -156,8 +157,8 @@ var forecastWeatherBox = function(cityWeatherObject) {
 
 // Brit: Need to make the search history buttons with id, and when click, the button re runs the 'today weather' function
 
-var searchHistoryBtn = function() {
-  console.log("this worked");
+function searchHistoryFunction(id) {
+  cityForecast(id);
 };
 
 // ===================================================================//
