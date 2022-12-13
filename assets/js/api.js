@@ -64,29 +64,37 @@ var cityWeather = function(city, longitude, latitude) {
              }
             );
     } else {
-        citySearchHistory.push(
-            {
-                "cityIdValue": cityNumber,
-                "city": city,
-                "longitude": longitude,
-                "latitdue": latitude
-             }
-            );
+
+        // for loop to check for previous city
+        for (i=0; i < citySearchHistory.length; i++ ) {
+
+            if (city !== citySearchHistory[i].city) {
+              citySearchHistory.push(
+                {
+                    "cityIdValue": cityNumber,
+                    "city": city,
+                    "longitude": longitude,
+                    "latitdue": latitude
+                 }
+                );
+
+                const $searchList = document.querySelector("#search-history-list");
+
+                const searchItem = 
+                `
+                <input type="button" value="${city}" id="${cityNumber}" onclick="searchHistoryFunction(this.value)" />
+                `
+            
+                cityNumber = cityNumber + 1;
+            
+                $searchList.innerHTML += searchItem;
+
+                weather(city, longitude, latitude);
+            };
+        };        
     };
 
-    const $searchList = document.querySelector("#search-history-list");
-
-    const searchItem = 
-    `
-    <input type="button" value="${city}" id="${cityNumber}" onclick="searchHistoryFunction(this.value)" />
-    `
-
-    cityNumber = cityNumber + 1;
-
-    $searchList.innerHTML += searchItem;
-
-    // Today weather history
-    weather(city, longitude, latitude);
+   weather(city, longitude, latitude);
 };
 
 
