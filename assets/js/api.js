@@ -48,8 +48,8 @@ var cityForecast = function(city) {
 // ===================================================================//
 // Display Search History - Cities
 var cityWeather = function(city, longitude, latitude) {
-
-    if (!citySearchHistory.length === 0) {
+  
+  if (!citySearchHistory.length === 0) {
         citySearchHistory.push(
             {
                 "city": city,
@@ -69,13 +69,16 @@ var cityWeather = function(city, longitude, latitude) {
 
     console.log(citySearchHistory);
 
-    // Previous Search History
-    divEl = document.createElement('div');
-    pEl = document.createElement('p');
-    pEl.textContent = city;
-    pEl.setAttribute("style", "background-color: grey; color: pink; padding: 10px; text-align: center;");
-    divEl.appendChild(pEl);
-    searchList.appendChild(divEl);
+    const $searchList = document.querySelector("#search-history-list");
+
+    const searchItem = 
+    `
+    <button id="history-btn" value="${city}">
+      <h2>${city}</h2>
+    </button>
+    `
+
+    $searchList.innerHTML +=searchItem;
 
     // Today weather history
     weather(city, longitude, latitude);
@@ -114,41 +117,30 @@ var weather = function(city, longitude, latitude) {
 
 var todayWeatherBox = function(cityWeatherObject) {
 
-  console.log(cityWeatherObject);
+  const $todayCityContainer = document.querySelector("#today-container");
 
-  // Creating the DOM elements for today weather using the data
-  var todayCityContainer = document.querySelector("#today-container");
- 
-  var todayDiv = document.createElement('div');
+  // New way of adding card
+  const weatherToday = 
+  `
+  <div class="cityHeader">
+    <h1>${cityWeatherObject.city}</h1>
+    <p>Date: ${cityWeatherObject.day1weather.dt_txt}</p>
+    <p>Temperature: ${cityWeatherObject.day1weather.main.temp}</p>
+    <p>Wind Speed: ${cityWeatherObject.day1weather.wind.speed}</p>
+    <p>Humidity: ${cityWeatherObject.day1weather.main.humidity}</p>
+  </div>
+  `
+  $todayCityContainer.innerHTML = weatherToday;
 
-  var todayCityEl = document.createElement('h2');
-  var todayDateEl = document.createElement('h3');
-  var todayTempEl = document.createElement('h3');
-  var todayWindEl = document.createElement('h3');
-  var todayHumidityEl = document.createElement('h3');
-
-  todayCityEl.textContent = "City: " + cityWeatherObject.city;
-  todayDateEl.textContent = "Date: " + cityWeatherObject.day1weather.dt_txt;
-  todayTempEl.textContent = "Temperature: " + cityWeatherObject.day1weather.main.temp;
-  todayWindEl.textContent = "Wind Speed: " + cityWeatherObject.day1weather.wind.speed;
-  todayHumidityEl.textContent = "Humidity: " + cityWeatherObject.day1weather.main.humidity;
-
-  // Add to box
-  todayDiv.appendChild(todayCityEl);
-  todayDiv.appendChild(todayDateEl);
-  todayDiv.appendChild(todayTempEl);
-  todayDiv.appendChild(todayWindEl);
-  todayDiv.appendChild(todayHumidityEl);
-
-  todayCityContainer.appendChild(todayDiv);
 };
 
 // ===================================================================//
 // Display the Forecast Weather for 5 days
 
+// NOTE TO BRIT: MAP THE 5 DIFFERENT BOXES
+
 var forecastWeatherBox = function(cityWeatherObject) {
     
-  console.log(cityWeatherObject);
 };
 
 
@@ -158,8 +150,16 @@ var forecastWeatherBox = function(cityWeatherObject) {
 // Function for clicking the previous history city and displaying that data
 // rather than a search term city
 
+// Brit: Need to make the search history buttons with id, and when click, the button re runs the 'today weather' function
+/*
+var searchHistoryBtn = function() {
+  console.log(`${value}`);
+};
 
+const historyBtn = document.querySelector("#history-btn");
+historyBtn.addEventListener('click', searchHistoryBtn);
 
+*/
 
 
 

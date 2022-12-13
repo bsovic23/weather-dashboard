@@ -18,7 +18,11 @@ h1 {
 
 
 /* Todays Weather Section */
-
+.cityHeader h1 {
+    color: pink;
+    background-color: green;
+    font-size: 32px;
+}
 
 
 /* 5 day forecast section */
