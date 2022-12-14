@@ -103,7 +103,7 @@ var weather = function(city, longitude, latitude) {
           var cityWeatherObject = {
             "city": data.city.name,
             "todayweather": data.list[0],
-            "day1weather": data.list[8],
+            "day1weather": data.list[4],
             "day2weather": data.list[7],
             "day3weather": data.list[16],
             "day4weather": data.list[24],
@@ -129,10 +129,10 @@ var todayWeatherBox = function(cityWeatherObject) {
   `
   <div class="cityHeader">
     <h1>${cityWeatherObject.city}</h1>
-    <p>Date: ${cityWeatherObject.day1weather.dt_txt}</p>
-    <p>Temperature: ${cityWeatherObject.day1weather.main.temp}</p>
-    <p>Wind Speed: ${cityWeatherObject.day1weather.wind.speed}</p>
-    <p>Humidity: ${cityWeatherObject.day1weather.main.humidity}</p>
+    <p>Date: ${cityWeatherObject.todayweather.dt_txt}</p>
+    <p>Temperature: ${cityWeatherObject.todayweather.main.temp}</p>
+    <p>Wind Speed: ${cityWeatherObject.todayweather.wind.speed}</p>
+    <p>Humidity: ${cityWeatherObject.todayweather.main.humidity}</p>
   </div>
   `
   $todayCityContainer.innerHTML = weatherToday;
@@ -145,7 +145,64 @@ var todayWeatherBox = function(cityWeatherObject) {
 // NOTE TO BRIT: MAP THE 5 DIFFERENT BOXES
 
 var forecastWeatherBox = function(cityWeatherObject) {
-    
+
+  const forecastDay1 = 
+  `
+  <div>
+    <p>Date: ${cityWeatherObject.day1weather.dt_txt}</p>
+    <p>Temperature: ${cityWeatherObject.day1weather.main.temp}</p>
+    <p>Wind Speed: ${cityWeatherObject.day1weather.wind.speed}</p>
+    <p>Humidity: ${cityWeatherObject.day1weather.main.humidity}</p>
+  </div>
+  `
+
+  const forecastDay2 = 
+  `
+  <div>
+    <p>Date: ${cityWeatherObject.day2weather.dt_txt}</p>
+    <p>Temperature: ${cityWeatherObject.day2weather.main.temp}</p>
+    <p>Wind Speed: ${cityWeatherObject.day2weather.wind.speed}</p>
+    <p>Humidity: ${cityWeatherObject.day2weather.main.humidity}</p>
+  </div>
+  `
+
+  const forecastDay3 = 
+  `
+  <div>
+    <p>Date: ${cityWeatherObject.day3weather.dt_txt}</p>
+    <p>Temperature: ${cityWeatherObject.day3weather.main.temp}</p>
+    <p>Wind Speed: ${cityWeatherObject.day3weather.wind.speed}</p>
+    <p>Humidity: ${cityWeatherObject.day3weather.main.humidity}</p>
+  </div>
+  `
+
+  const forecastDay4 = 
+  `
+  <div>
+    <p>Date: ${cityWeatherObject.day4weather.dt_txt}</p>
+    <p>Temperature: ${cityWeatherObject.day4weather.main.temp}</p>
+    <p>Wind Speed: ${cityWeatherObject.day4weather.wind.speed}</p>
+    <p>Humidity: ${cityWeatherObject.day4weather.main.humidity}</p>
+  </div>
+  `
+
+  const forecastDay5 = 
+  `
+  <div>
+    <p>Date: ${cityWeatherObject.day5weather.dt_txt}</p>
+    <p>Temperature: ${cityWeatherObject.day5weather.main.temp}</p>
+    <p>Wind Speed: ${cityWeatherObject.day5weather.wind.speed}</p>
+    <p>Humidity: ${cityWeatherObject.day5weather.main.humidity}</p>
+  </div>
+  `
+
+  const $forecaseCityContainer = document.querySelector("#forecast-container");
+
+  $forecaseCityContainer.innerHTML = forecastDay1;
+  $forecaseCityContainer.innerHTML += forecastDay2;
+  $forecaseCityContainer.innerHTML += forecastDay3;
+  $forecaseCityContainer.innerHTML += forecastDay4;
+  $forecaseCityContainer.innerHTML += forecastDay5;
 };
 
 
