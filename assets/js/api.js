@@ -32,7 +32,7 @@ var getCity = function(event) {
 var cityForecast = function(city) {
     var searchCity = city;
 
-    var cityWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&appid=" + APIKey;
+    var cityWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&appid=" + APIKey;
 
     fetch(cityWeatherUrl).then(function(response) {
         response.json().then(function(data) {
