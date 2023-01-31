@@ -148,8 +148,8 @@ var forecastWeatherBox = function(cityWeatherObject) {
 
   const forecastDay1 = 
   `
-  <div>
-    <p>Date: ${cityWeatherObject.day1weather.dt_txt}</p>
+  <div class="forecast-card">
+    <h2>Date: ${cityWeatherObject.day1weather.dt_txt}</h2>
     <p>Temperature: ${cityWeatherObject.day1weather.main.temp}</p>
     <p>Wind Speed: ${cityWeatherObject.day1weather.wind.speed}</p>
     <p>Humidity: ${cityWeatherObject.day1weather.main.humidity}</p>
@@ -158,8 +158,8 @@ var forecastWeatherBox = function(cityWeatherObject) {
 
   const forecastDay2 = 
   `
-  <div>
-    <p>Date: ${cityWeatherObject.day2weather.dt_txt}</p>
+  <div class="forecast-card">
+    <h2>Date: ${cityWeatherObject.day2weather.dt_txt}</h2>
     <p>Temperature: ${cityWeatherObject.day2weather.main.temp}</p>
     <p>Wind Speed: ${cityWeatherObject.day2weather.wind.speed}</p>
     <p>Humidity: ${cityWeatherObject.day2weather.main.humidity}</p>
@@ -168,8 +168,8 @@ var forecastWeatherBox = function(cityWeatherObject) {
 
   const forecastDay3 = 
   `
-  <div>
-    <p>Date: ${cityWeatherObject.day3weather.dt_txt}</p>
+  <div class="forecast-card">
+    <h2>Date: ${cityWeatherObject.day3weather.dt_txt}</h2>
     <p>Temperature: ${cityWeatherObject.day3weather.main.temp}</p>
     <p>Wind Speed: ${cityWeatherObject.day3weather.wind.speed}</p>
     <p>Humidity: ${cityWeatherObject.day3weather.main.humidity}</p>
@@ -178,8 +178,8 @@ var forecastWeatherBox = function(cityWeatherObject) {
 
   const forecastDay4 = 
   `
-  <div>
-    <p>Date: ${cityWeatherObject.day4weather.dt_txt}</p>
+  <div class="forecast-card">
+    <h2>Date: ${cityWeatherObject.day4weather.dt_txt}</h2>
     <p>Temperature: ${cityWeatherObject.day4weather.main.temp}</p>
     <p>Wind Speed: ${cityWeatherObject.day4weather.wind.speed}</p>
     <p>Humidity: ${cityWeatherObject.day4weather.main.humidity}</p>
@@ -188,8 +188,8 @@ var forecastWeatherBox = function(cityWeatherObject) {
 
   const forecastDay5 = 
   `
-  <div>
-    <p>Date: ${cityWeatherObject.day5weather.dt_txt}</p>
+  <div class="forecast-card">
+    <h2>Date: ${cityWeatherObject.day5weather.dt_txt}</h2>
     <p>Temperature: ${cityWeatherObject.day5weather.main.temp}</p>
     <p>Wind Speed: ${cityWeatherObject.day5weather.wind.speed}</p>
     <p>Humidity: ${cityWeatherObject.day5weather.main.humidity}</p>

@@ -34,7 +34,7 @@ https://bsovic23.github.io/weather-dashboard/
 
 ## Screenshots
 
+![](assets/pictures/Application.PNG)
 ![](assets/pictures/Intro.PNG)
 ![](assets/pictures/PreviousSearches.PNG)
 ![](assets/pictures/TodayWeather.PNG)
-
