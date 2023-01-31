@@ -26,3 +26,10 @@ h1 {
 
 
 /* 5 day forecast section */
+.forecast-card h2 {
+    background-color: rgb(44, 196, 196);
+}
+
+.forecast-card p {
+    background-color: tan;
+}
